@@ -126,4 +126,5 @@ app.use('/api/compras', async (req, res) => {
 // Iniciar el servidor
 app.listen(PORT, () => {
     console.log(`API Gateway escuchando en http://localhost:${PORT}`);
+    console.log(`Documentación disponible en http://localhost:${PORT}/api-docs`);
 });
