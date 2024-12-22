@@ -1,0 +1,224 @@
+openapi: 3.0.0
+info:
+  title: Product Microservice API
+  version: 1.0.0
+  description: API para gestionar productos en Elasticsearch.
+servers:
+  - url: http://localhost:1000
+    description: Servidor local de desarrollo
+
+paths:
+  /:
+    get:
+      summary: Obtener todos los productos
+      tags:
+        - Productos
+      responses:
+        '200':
+          description: Lista de productos obtenidos exitosamente.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+        '500':
+          description: Error al obtener los productos.
+    post:
+      summary: Crear un nuevo producto
+      tags:
+        - Productos
+      requestBody:
+        description: Datos del producto a crear.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+      responses:
+        '201':
+          description: Producto creado exitosamente.
+        '500':
+          description: Error al crear el producto.
+
+  /id/{id}:
+    get:
+      summary: Obtener un producto por ID
+      tags:
+        - Productos
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID del producto.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Producto obtenido exitosamente.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        '404':
+          description: Producto no encontrado.
+        '500':
+          description: Error al obtener el producto.
+
+  /category/{category}:
+    get:
+      summary: Obtener productos por categoría
+      tags:
+        - Productos
+      parameters:
+        - name: category
+          in: path
+          required: true
+          description: Categoría del producto.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Lista de productos obtenidos exitosamente.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+        '500':
+          description: Error al obtener productos por categoría.
+
+  /console/{console}:
+    get:
+      summary: Obtener productos por consola
+      tags:
+        - Productos
+      parameters:
+        - name: console
+          in: path
+          required: true
+          description: Consola asociada al producto.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Lista de productos obtenidos exitosamente.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+        '500':
+          description: Error al obtener productos por consola.
+
+  /name/{name}:
+    get:
+      summary: Obtener productos por nombre
+      tags:
+        - Productos
+      parameters:
+        - name: name
+          in: path
+          required: true
+          description: Nombre del producto.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Lista de productos obtenidos exitosamente.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+        '500':
+          description: Error al obtener productos por nombre.
+
+  /price:
+    get:
+      summary: Obtener productos por rango de precio
+      tags:
+        - Productos
+      parameters:
+        - name: min
+          in: query
+          required: false
+          description: Precio mínimo.
+          schema:
+            type: number
+        - name: max
+          in: query
+          required: false
+          description: Precio máximo.
+          schema:
+            type: number
+      responses:
+        '200':
+          description: Lista de productos obtenidos exitosamente.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+        '500':
+          description: Error al obtener productos por rango de precio.
+
+  /deleteAll:
+    delete:
+      summary: Eliminar todos los productos
+      tags:
+        - Productos
+      responses:
+        '200':
+          description: Productos eliminados exitosamente.
+        '500':
+          description: Error al eliminar productos.
+
+  /{id}:
+    delete:
+      summary: Eliminar un producto por ID
+      tags:
+        - Productos
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID del producto.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Producto eliminado exitosamente.
+        '500':
+          description: Error al eliminar el producto.
+
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        id:
+          type: string
+          description: ID del producto en Elasticsearch.
+        name:
+          type: string
+          description: Nombre del producto.
+        category:
+          type: string
+          description: Categoría del producto.
+        consola:
+          type: string
+          description: Consola asociada al producto.
+        price:
+          type: number
+          description: Precio del producto.
+        description:
+          type: string
+          description: Descripción del producto.
+        imageUrl:
+          type: string
+          description: URL de la imagen del producto.

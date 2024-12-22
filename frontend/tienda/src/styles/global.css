@@ -1,0 +1,15 @@
+/* global.css */
+body {
+    background-color: #151a2b;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+/* Otros estilos globales */

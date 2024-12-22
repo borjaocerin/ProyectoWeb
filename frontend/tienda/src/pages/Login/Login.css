@@ -1,0 +1,100 @@
+/* src/pages/Login.css */
+
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #0D1117; 
+}
+
+.login-container {
+    background-color: #161B22; 
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.login-title {
+    color: #FFFFFF;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+label {
+    color: #C9D1D9;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+input[type="email"],
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #30363D;
+    border-radius: 5px;
+    background-color: #21262D;
+    color: #C9D1D9;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+input:focus {
+    outline: none;
+    border-color: #6E40C9;
+}
+
+.login-button {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: #6E40C9;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 1rem;
+}
+
+.login-button:hover {
+    background-color: #5B32A1;
+}
+
+.error-message,
+.success-message {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+.error-message {
+    color: #FF6B6B;
+}
+
+.success-message {
+    color: #32CD32;
+}
+
+
+.toggle-button {
+    background: none;
+    border: none;
+    color: #6E40C9;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-left: 0.5rem;
+}
+
+.toggle-button:hover {
+    text-decoration: underline;
+}

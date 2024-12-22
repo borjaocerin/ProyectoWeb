@@ -1,0 +1,3 @@
+npm install express axios
+npm install cors
+node gateway.js

@@ -1,0 +1,67 @@
+/* Contenedor principal de Pedidos */
+.pedidos-container {
+    
+    color: #C9D1D9; 
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+/* Título de la página */
+.pedidos-title {
+    color: #ffff; 
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Lista de pedidos */
+.pedidos-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    max-width: 600px;
+    width: 100%;
+}
+
+/* Tarjeta de pedido */
+.pedido-item {
+    background-color: #1e2235;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Imagen del producto */
+.pedido-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+/* Contenido de texto dentro de la tarjeta */
+.pedido-details {
+    flex: 1;
+}
+
+.pedido-name {
+    font-size: 18px;
+    color: #ffff; 
+    margin: 0;
+}
+
+.pedido-date {
+    font-size: 12px;
+    color: #8B949E; /* Gris claro */
+    margin-top: 5px;
+}
+
+.pedido-price {
+    color: #ff66c4;
+    font-size: 1em;
+    margin-top: 8px;
+}

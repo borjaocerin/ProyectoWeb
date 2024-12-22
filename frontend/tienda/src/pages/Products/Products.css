@@ -1,0 +1,42 @@
+/* Products.css */
+.products-page {
+    display: flex;
+    padding: 1.25rem; 
+    background-color: #151a2b;
+    color: #fff;
+}
+
+.filters-panel {
+    background-color: #1e2235;
+    padding: 1.25rem; 
+    width: 15.625rem; 
+    min-width: 15.625rem; 
+    max-width: 15.625rem; 
+    border-radius: 0.5rem;
+    margin-right: 1.25rem; 
+    box-sizing: border-box;
+}
+
+.search-input,
+.filter-select,
+.price-input {
+    width: 100%;
+    padding: 0.625rem; 
+    margin: 0.3125rem 0;
+    border-radius: 0.25rem; 
+    border: none;
+    outline: none;
+    background-color: #2a2f47;
+    color: #fff;
+}
+
+.price-range {
+    display: flex;
+    gap: 0.625rem;
+}
+
+.products-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem; 
+}

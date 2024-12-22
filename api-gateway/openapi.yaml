@@ -1,0 +1,214 @@
+openapi: 3.0.3
+info:
+  title: API Gateway
+  description: API Gateway para manejar solicitudes a los microservicios de usuarios, productos y compras.
+  version: 1.0.0
+servers:
+  - url: http://localhost:2000
+    description: Servidor local del API Gateway
+
+paths:
+  /api/users/logout:
+    post:
+      summary: Logout de usuario
+      description: Cierra la sesión de un usuario enviando el token al microservicio de usuarios.
+      requestBody:
+        description: Token JWT del usuario
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Logout exitoso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Cierre de sesión exitoso."
+        '401':
+          description: Falta el token de autorización
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "No se proporcionó el token de autorización."
+        '500':
+          description: Error en el microservicio
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Error en el logout del microservicio de usuarios."
+
+  /api/users/auth0-login:
+    get:
+      summary: Login con Auth0
+      description: Redirige al microservicio encargado del login con Auth0.
+      responses:
+        '302':
+          description: Redirección al endpoint de Auth0.
+        '500':
+          description: Error en la redirección al microservicio.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Error al redirigir al login de Auth0."
+
+  /api/users:
+    get:
+      summary: Proxy GET para usuarios
+      description: Maneja solicitudes GET al microservicio de usuarios.
+      responses:
+        '200':
+          description: Respuesta exitosa desde el microservicio de usuarios
+          content:
+            application/json:
+              schema:
+                type: object
+        '500':
+          description: Error en el microservicio de usuarios
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Error en el microservicio de usuarios."
+    post:
+      summary: Proxy POST para usuarios
+      description: Maneja solicitudes POST al microservicio de usuarios.
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Respuesta exitosa desde el microservicio de usuarios
+          content:
+            application/json:
+              schema:
+                type: object
+        '500':
+          description: Error en el microservicio de usuarios
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Error en el microservicio de usuarios."
+
+  /api/products:
+    get:
+      summary: Proxy GET para productos
+      description: Maneja solicitudes GET al microservicio de productos.
+      responses:
+        '200':
+          description: Respuesta exitosa desde el microservicio de productos
+          content:
+            application/json:
+              schema:
+                type: object
+        '500':
+          description: Error en el microservicio de productos
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Error en el microservicio de productos."
+    post:
+      summary: Proxy POST para productos
+      description: Maneja solicitudes POST al microservicio de productos.
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Respuesta exitosa desde el microservicio de productos
+          content:
+            application/json:
+              schema:
+                type: object
+        '500':
+          description: Error en el microservicio de productos
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Error en el microservicio de productos."
+
+  /api/compras:
+    get:
+      summary: Proxy GET para compras
+      description: Maneja solicitudes GET al microservicio de compras.
+      responses:
+        '200':
+          description: Respuesta exitosa desde el microservicio de compras
+          content:
+            application/json:
+              schema:
+                type: object
+        '500':
+          description: Error en el microservicio de compras
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Error en el microservicio de compras."
+    post:
+      summary: Proxy POST para compras
+      description: Maneja solicitudes POST al microservicio de compras.
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Respuesta exitosa desde el microservicio de compras
+          content:
+            application/json:
+              schema:
+                type: object
+        '500':
+          description: Error en el microservicio de compras
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Error en el microservicio de compras."

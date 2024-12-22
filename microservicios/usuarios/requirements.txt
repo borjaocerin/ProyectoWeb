@@ -1,0 +1,9 @@
+Flask
+Flask-SQLAlchemy
+Flask-Migrate
+Flask-Bcrypt
+Flask-JWT-Extended
+flask-cors
+authlib
+requests
+flask_swagger_ui

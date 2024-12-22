@@ -1,0 +1,127 @@
+.product-details-page {
+    font-family: Arial, sans-serif;
+    color: #ffffff;
+    padding: 20px;
+    background-color: #1e2235;
+    max-width: 800px;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.product-details-page .product-title {
+    font-size: 1.8em;
+    color: #d3d3d3;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.product-details-page .product-content {
+    display: flex;
+    gap: 20px;
+}
+
+.product-details-page .product-image-column {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-details-page .product-image {
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.product-details-page .product-info-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.product-details-page .product-name {
+    font-size: 1.6em;
+    color: #ffffff;
+    text-align: center;
+    margin-top: 0;
+}
+
+.product-details-page .product-price {
+    font-size: 1.4em;
+    color: #ff66c4;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.product-details-page .product-description {
+    font-size: 1em;
+    color: #b3b3b3;
+    text-align: justify;
+    margin-bottom: 20px;
+}
+
+.product-details-page .buy-button {
+    background-color: #6e56d8;
+    color: #ffffff;
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+    transition: background-color 0.3s ease;
+}
+
+.product-details-page .buy-button:hover {
+    background-color: #9d4de6;
+}
+
+.product-details-page .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.product-details-page .modal-content {
+    background-color: #1e2235;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 500px;
+    text-align: center;
+    color: #ffffff;
+    position: relative;
+}
+
+.product-details-page .close-button {
+    background-color: transparent;
+    border: none;
+    font-size: 1.5em;
+    color: #ffffff;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+@media (max-width: 600px) {
+    .product-details-page .product-content {
+        flex-direction: column;
+    }
+    .product-details-page .product-image, .product-details-page .product-info-column {
+        width: 100%;
+    }
+}

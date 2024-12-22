@@ -1,0 +1,131 @@
+openapi: 3.0.0
+info:
+  title: Compras Microservice API
+  description: API para gestionar compras en el sistema.
+  version: 1.0.0
+servers:
+  - url: http://localhost:1000
+    description: Servidor local de desarrollo
+paths:
+  /:
+    get:
+      summary: Obtener todas las compras
+      description: Devuelve una lista de todas las compras realizadas.
+      responses:
+        '200':
+          description: Lista de compras obtenida exitosamente.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Compra'
+        '500':
+          description: Error al obtener los pedidos.
+    post:
+      summary: Crear una nueva compra
+      description: Crea un nuevo pedido en el sistema.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CompraInput'
+      responses:
+        '201':
+          description: Pedido creado exitosamente.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Compra'
+        '500':
+          description: Error al crear el pedido.
+
+  /{id}:
+    get:
+      summary: Obtener un pedido por ID
+      description: Devuelve un pedido específico basado en su ID.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID del pedido.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Pedido obtenido exitosamente.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Compra'
+        '404':
+          description: Pedido no encontrado.
+        '500':
+          description: Error al obtener el pedido.
+    delete:
+      summary: Eliminar un pedido por ID
+      description: Elimina un pedido específico del sistema.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID del pedido.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Pedido eliminado exitosamente.
+        '404':
+          description: Pedido no encontrado.
+        '500':
+          description: Error al eliminar el pedido.
+
+  /usuario/{email}:
+    get:
+      summary: Obtener compras por usuario
+      description: Devuelve todas las compras realizadas por un usuario específico basado en su email.
+      parameters:
+        - name: email
+          in: path
+          required: true
+          description: Email del usuario.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Compras obtenidas exitosamente.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Compra'
+        '403':
+          description: El email del token no coincide con el solicitado.
+        '404':
+          description: No se encontraron compras para este usuario.
+        '500':
+          description: Error al obtener las compras.
+
+components:
+  schemas:
+    Compra:
+      type: object
+      properties:
+        id:
+          type: string
+          description: ID único del pedido.
+        email:
+          type: string
+          description: Email del usuario que realizó la compra.
+        id_producto:
+          type: string
+          description: ID del producto comprado.
+        fecha_pedido:
+          type: string
+          description: Fecha en que se realizó el pedido.
+        precio:
+          type: number
+          description: Precio del producto.
+    
