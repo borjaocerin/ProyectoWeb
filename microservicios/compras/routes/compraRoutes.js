@@ -8,8 +8,6 @@ const {
     getComprasByUsuarioEmail,
 } = require('../controllers/comprasController');
 
-// Obtener todos los pedidos
-
 
 // Obtener un pedido por ID
 router.get('/:id', getCompraById);
