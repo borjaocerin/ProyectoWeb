@@ -9,7 +9,7 @@ const {
 } = require('../controllers/comprasController');
 
 // Obtener todos los pedidos
-router.get('/', getAllCompras);
+
 
 // Obtener un pedido por ID
 router.get('/:id', getCompraById);

@@ -49,12 +49,19 @@ const deleteCompraById = async (req, res) => {
 const jwt = require('jsonwebtoken');
 const getComprasByUsuarioEmail = async (req, res) => {
     try {
-        console.log(req.headers);
         const token = req.headers['authorization']?.split(' ')[1];
+        if (!token) {
+            return res.status(401).json({ message: 'No se proporcionó un token' });
+        }
+
         const decoded = jwt.decode(token);
-        const email1 = decoded?.sub;
-        const compras = await Compra.find({ email1 });
-       
+        const email = decoded?.sub;
+
+        if (!email) {
+            return res.status(400).json({ message: 'El token no contiene información válida de email' });
+        }
+
+        const compras = await Compra.find({ email });
 
         if (compras.length === 0) {
             return res.status(404).json({ message: 'No se encontraron compras para este usuario' });
@@ -65,6 +72,7 @@ const getComprasByUsuarioEmail = async (req, res) => {
         res.status(500).json({ message: 'Error al obtener las compras', error });
     }
 };
+
 
 module.exports = {
     getAllCompras,

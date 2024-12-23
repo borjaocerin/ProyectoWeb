@@ -8,20 +8,6 @@ servers:
     description: Servidor local de desarrollo
 paths:
   /:
-    get:
-      summary: Obtener todas las compras
-      description: Devuelve una lista de todas las compras realizadas.
-      responses:
-        '200':
-          description: Lista de compras obtenida exitosamente.
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Compra'
-        '500':
-          description: Error al obtener los pedidos.
     post:
       summary: Crear una nueva compra
       description: Crea un nuevo pedido en el sistema.
