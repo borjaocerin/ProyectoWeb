@@ -142,5 +142,6 @@ Este microservicio permite gestionar los usuarios del sistema.
 
 ---
 
-
+## IP de la pagina web principal 
+- http://localhost:3000/products
 

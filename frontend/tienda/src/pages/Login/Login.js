@@ -21,7 +21,6 @@ const Login = () => {
         if (isLogin) {
             try {
                 await login(email, password);
-                setSuccessMessage("Inicio de sesión exitoso.");
             } catch (error) {
                 setErrorMessage("Error al iniciar sesión: " + error.message);
             }
