@@ -1,28 +1,66 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import { AuthProvider } from './context/AuthContext';  // Ya tienes el AuthProvider aquí para manejar el login y el estado del usuario.
+import { AuthProvider } from './context/AuthContext'; // Manejo del login y el estado del usuario
 import Navbar from './components/Navbar';
 import Products from './pages/Products/Products';
 import Pedidos from './pages/Pedidos/Pedidos';
-import AuthCallback from './pages/callback/callback'
+import AuthCallback from './pages/callback/callback';
 import Login from './pages/Login/Login';
-import ProductDetail from './pages/ProductDetail/ProductDetail'; // Importa el componente de detalles del producto
+import ProductDetail from './pages/ProductDetail/ProductDetail'; // Detalles del producto
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
-const App = () => (
-    <Router>
-        <AuthProvider>  {/* AuthProvider sigue siendo necesario para manejar el estado de autenticación */}
-            <Navbar />
-            <Routes>
-                <Route path="/products" element={<Products />} />
-                <Route path="/pedidos" element={<Pedidos />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/products/:id" element={<ProductDetail />} /> {/* Nueva ruta para los detalles del producto */}
-                <Route path="/auth/callback" element={<AuthCallback />} /> {/* Ruta para el callback de Auth0 */}
-            </Routes>
-        </AuthProvider>
-    </Router>
-);
+const App = () => {
+    const [installPrompt, setInstallPrompt] = useState(null);
+    const [isInstallable, setIsInstallable] = useState(false);
+
+    useEffect(() => {
+        const handleBeforeInstallPrompt = (event) => {
+            event.preventDefault();
+            setInstallPrompt(event); // Guarda el evento para activarlo más tarde
+            setIsInstallable(true); // Habilita el botón de instalación
+        };
+
+        window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+
+        return () => {
+            window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+        };
+    }, []);
+
+    const handleInstallClick = () => {
+        if (installPrompt) {
+            installPrompt.prompt(); // Activa el prompt de instalación
+            installPrompt.userChoice.then((choiceResult) => {
+                if (choiceResult.outcome === 'accepted') {
+                    console.log('PWA instalada');
+                } else {
+                    console.log('PWA no instalada');
+                }
+                setInstallPrompt(null); // Limpia el evento después de usarlo
+            });
+        }
+    };
+
+    return (
+        <Router>
+            <AuthProvider>
+                <Navbar />
+                {isInstallable && (
+                    <button onClick={handleInstallClick} className="pwa-install-button">
+                        Descargar Aplicación
+                    </button>
+                )}
+                <Routes>
+                    <Route path="/products" element={<Products />} />
+                    <Route path="/pedidos" element={<Pedidos />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/products/:id" element={<ProductDetail />} />
+                    <Route path="/auth/callback" element={<AuthCallback />} />
+                </Routes>
+            </AuthProvider>
+        </Router>
+    );
+};
 
 export default App;

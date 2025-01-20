@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'; // Solo necesitas esta importación en 
 import './index.css';
 import App from './App';
 import './styles/global.css';
+import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -10,3 +11,5 @@ root.render(
     <App />
 </React.StrictMode>
 );
+
+serviceWorkerRegistration.register();

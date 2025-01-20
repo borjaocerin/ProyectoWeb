@@ -5,6 +5,7 @@
   "dependencies": {
     "@auth0/auth0-react": "^2.2.4",
     "@fortawesome/fontawesome-free": "^6.6.0",
+    "@paypal/react-paypal-js": "^8.7.0",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -38,5 +39,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "workbox-webpack-plugin": "^7.3.0"
   }
 }
