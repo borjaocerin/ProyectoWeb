@@ -14,7 +14,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openapiDocument));
 
 // Middleware para permitir CORS
 app.use(cors({
-    origin: ['http://localhost:3000'], // Permitir solicitudes desde este origen
+    origin: ['http://localhost:3000','http://frontend:3000'],// Permitir solicitudes desde este origen
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos permitidos
     allowedHeaders: ['Content-Type', 'Authorization'], // Encabezados permitidos
     credentials: true, // Permitir credenciales
@@ -36,7 +36,7 @@ app.post('/api/users/logout', async (req, res) => {
     try {
         const response = await axios({
             method: 'POST',
-            url: 'http://localhost:5000/logout', // URL del microservicio de logout
+            url: 'http://microservicio_usuarios:5000/logout', // URL del microservicio de logout
             headers: {
                 'Authorization': authHeader, // Pasa el token JWT
             },
@@ -52,7 +52,7 @@ app.get('/api/users/auth0-login', (req, res) => {
     console.log('Solicitud de login con Auth0 recibida');
     
     // Redirigir al microservicio que maneja Auth0 (por ejemplo, en localhost:5000)
-    res.redirect('http://localhost:5000/auth0-login');  // Suponiendo que el microservicio maneja la ruta /auth0-login
+    res.redirect('http://microservicio_usuarios:5000/auth0-login');  // Suponiendo que el microservicio maneja la ruta /auth0-login
 });
 
 
@@ -65,7 +65,7 @@ app.use('/api/users', async (req, res) => {
     try {
         const response = await axios({
             method: req.method,
-            url: 'http://localhost:5000' + req.originalUrl.replace('/api/users', ''), // Ajustar la ruta
+            url: 'http://microservicio_usuarios:5000' + req.originalUrl.replace('/api/users', ''), // Ajustar la ruta
             data: req.body,
             headers: {
                 'Authorization': req.headers['Authorization'] ? req.headers['Authorization'] : undefined,
@@ -86,7 +86,7 @@ app.use('/api/products', async (req, res) => {
     try {
         const response = await axios({
             method: req.method,
-            url: 'http://localhost:4000' + req.originalUrl, 
+            url: 'http://microservicio_my-elasticsearch-productos:4000' + req.originalUrl, 
             data: req.body,
             headers: {
                 'Authorization': req.headers['Authorization'] ? req.headers['Authorization'] : undefined,
@@ -108,7 +108,7 @@ app.use('/api/compras', async (req, res) => {
     try {
         const response = await axios({
             method: req.method,
-            url: 'http://localhost:1000' + req.originalUrl,
+            url: 'http://microservicio_compras:1000' + req.originalUrl,
             data: req.body,
             headers: {
                 'Authorization': req.headers['authorization'],

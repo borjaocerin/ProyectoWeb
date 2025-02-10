@@ -1,0 +1,81 @@
+
+services:
+  frontend:
+    build:
+      context: ./frontend/tienda
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api_gateway
+
+  api_gateway:
+    build:
+      context: ./api-gateway
+    ports:
+      - "2000:2000"
+    depends_on:
+      - microservicio_my-elasticsearch-productos
+      - microservicio_compras
+      - microservicio_usuarios
+
+  microservicio_my-elasticsearch-productos:
+    build:
+      context: ./microservicios/my-elasticsearch-productos
+    ports:
+      - "4000:4000"
+    environment:
+      - MONGO_URI=mongodb://mongo_db:27017/my-elasticsearch-productos
+    depends_on:
+      - mongo_db
+
+  microservicio_compras:
+    build:
+      context: ./microservicios/compras
+    ports:
+      - "1000:1000"
+    environment:
+      - MONGO_URI=mongodb://mongo_db:27017/compras
+    depends_on:
+      - mongo_db
+
+  microservicio_usuarios:
+    build:
+      context: ./microservicios/usuarios
+    ports:
+      - "5000:5000"
+    environment:
+      - MONGO_URI=mongodb://mongo_db:27017/usuarios
+    depends_on:
+      - mongo_db
+
+  mongo_db:
+    image: mongo
+    container_name: mongo_db
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.10.1
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+    ports:
+      - "9200:9200"
+    volumes:
+      - esdata:/usr/share/elasticsearch/data
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.10.1
+    container_name: kibana
+    ports:
+      - "5601:5601"
+    depends_on:
+      - elasticsearch
+
+volumes:
+  mongo_data:
+  esdata:
+    driver: local

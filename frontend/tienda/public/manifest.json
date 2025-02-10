@@ -13,8 +13,12 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": "/",
+  "start_url": "/products",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#000000"
+  "categories":["shopping"],
+  "description":"PWA de una tienda para el TFG",
+  "theme_color": "#000000",
+  "lang": "es-ES"
+  
 }
