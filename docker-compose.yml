@@ -1,12 +1,5 @@
 
 services:
-  frontend:
-    build:
-      context: ./frontend/tienda
-    ports:
-      - "3000:3000"
-    depends_on:
-      - api_gateway
 
   api_gateway:
     build:
@@ -27,6 +20,7 @@ services:
       - MONGO_URI=mongodb://mongo_db:27017/my-elasticsearch-productos
     depends_on:
       - mongo_db
+      - elasticsearch
 
   microservicio_compras:
     build:
@@ -66,6 +60,12 @@ services:
       - "9200:9200"
     volumes:
       - esdata:/usr/share/elasticsearch/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9200/_cluster/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
 
   kibana:
     image: docker.elastic.co/kibana/kibana:7.10.1
