@@ -52,7 +52,7 @@ app.get('/api/users/auth0-login', (req, res) => {
     console.log('Solicitud de login con Auth0 recibida');
     
     // Redirigir al microservicio que maneja Auth0 
-    res.redirect('http://microservicio_usuarios:5000/auth0-login'); 
+    res.redirect('http://localhost:5000/auth0-login'); 
 });
 
 

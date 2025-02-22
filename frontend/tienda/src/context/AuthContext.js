@@ -22,7 +22,17 @@ export const AuthProvider = ({ children }) => {
             setEmail(email); // Guarda el nombre de usuario en el estado
             navigate('/products');
         } catch (error) {
-            // Manejo de errores
+             // Manejo de errores
+            if (error.response) {
+                console.error('Error en login:', error.response.data);
+                alert('Error en login');
+            } else if (error.request) {
+                console.error('Error en la solicitud:', error.request);
+                alert('Error en la solicitud. Por favor intenta de nuevo.');
+            } else {
+                console.error('Error:', error.message);
+                alert('Ocurrió un error inesperado. Por favor intenta de nuevo.');
+            }
         }
     };
 
@@ -36,7 +46,7 @@ export const AuthProvider = ({ children }) => {
             // Manejo de errores
             if (error.response) {
                 console.error('Error al registrarse:', error.response.data);
-                alert(error.response.data.message || 'Error al registrarse');
+                alert( 'Error al registrarse');
             } else if (error.request) {
                 console.error('Error en la solicitud:', error.request);
                 alert('Error en la solicitud. Por favor intenta de nuevo.');
