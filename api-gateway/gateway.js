@@ -14,7 +14,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openapiDocument));
 
 // Middleware para permitir CORS
 app.use(cors({
-    origin: ['http://localhost:3000','http://frontend:3000', "http://172.31.85.230:3000"],// Permitir solicitudes desde este origen
+    origin: ['http://localhost:3000','http://frontend:3000', "http://172.31.34.2:3000"],// Permitir solicitudes desde este origen
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos permitidos
     allowedHeaders: ['Content-Type', 'Authorization'], // Encabezados permitidos
     credentials: true, // Permitir credenciales

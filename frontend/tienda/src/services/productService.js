@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Configuración de axios
 const api = axios.create({
-    baseURL: 'http://localhost:2000/api/products'
+    baseURL: 'http://172.31.34.2:2000/api/products'
 });
 
 const getAllProducts = async () => {
