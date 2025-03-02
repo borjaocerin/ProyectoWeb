@@ -1,6 +1,6 @@
-// server.js o app.js
+// app.js
 const swaggerUi = require('swagger-ui-express');
-const YAML = require('yamljs'); // Permite cargar archivos YAML fácilmente
+const YAML = require('yamljs'); 
 const path = require('path');
 const express = require('express');
 const productRoutes = require('./routes/productRoutes');

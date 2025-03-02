@@ -23,7 +23,7 @@ const Login = () => {
                 await login(email, password);
             } catch (error) {
                 setErrorMessage("Error al iniciar sesión: " + error.message);
-                return;
+              
             }
         } else {
             if (password !== confirmPassword) {
