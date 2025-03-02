@@ -14,7 +14,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openapiDocument));
 
 // Middleware para permitir CORS
 app.use(cors({
-    origin: ['http://localhost:3000','http://frontend:3000', "http://172.31.34.2:3000"],// Permitir solicitudes desde este origen
+    origin: ['http://localhost:3000','http://frontend:3000', "http://172.31.41.141:3000"],// Permitir solicitudes desde este origen
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos permitidos
     allowedHeaders: ['Content-Type', 'Authorization'], // Encabezados permitidos
     credentials: true, // Permitir credenciales
@@ -52,7 +52,7 @@ app.get('/api/users/auth0-login', (req, res) => {
     console.log('Solicitud de login con Auth0 recibida');
     
     // Redirigir al microservicio que maneja Auth0 
-    res.redirect('http://localhost:5000/auth0-login'); 
+    res.redirect('http://172.31.41.141:5000/auth0-login'); 
 });
 
 
