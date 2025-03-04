@@ -14,11 +14,17 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openapiDocument));
 
 // Middleware para permitir CORS
 app.use(cors({
-    origin: ['http://localhost:3000','http://frontend:3000', "http://172.31.41.141:3000"],// Permitir solicitudes desde este origen
+    origin: [
+        'http://localhost:3000',  // Para desarrollo local
+        'http://frontend:3000',   // Si usas un contenedor con el nombre 'frontend'
+        'http://172.31.41.141:3000',  // Dirección IP del frontend si está en una máquina diferente
+        'http://frontborjaocerin.s3-website-us-east-1.amazonaws.com',  // Dominio del bucket S3 con tu frontend
+    ], 
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos permitidos
     allowedHeaders: ['Content-Type', 'Authorization'], // Encabezados permitidos
-    credentials: true, // Permitir credenciales
+    credentials: true,  // Permitir credenciales
 }));
+
 
 app.use(express.json()); // Middleware para procesar el JSON
 
