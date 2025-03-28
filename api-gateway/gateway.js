@@ -16,8 +16,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openapiDocument));
 app.use(cors({
     origin: [
         'http://localhost:3000',  // Para desarrollo local
-        'http://frontend:3000',   // Si usas un contenedor con el nombre 'frontend'
-        'http://172.26.6.222:3000',  // Dirección IP del frontend si está en una máquina diferente
+        'http://frontend:3000',   // Si usas un contenedor con el nombre 'frontend
         'http://frontborjaocerin.s3-website-us-east-1.amazonaws.com',  // Dominio del bucket S3 con tu frontend
     ], 
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos permitidos
