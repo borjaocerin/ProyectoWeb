@@ -4,18 +4,10 @@ const cors = require('cors'); // Importar cors
 const swaggerUi = require('swagger-ui-express');
 const fs = require('fs');
 const yaml = require('js-yaml');
-const https = require('https');  // Requiere el módulo 'https'
 const app = express();
 const PORT = 2000;
-
 // Carga el archivo openapi.yaml
 const openapiDocument = yaml.load(fs.readFileSync('./openapi.yaml', 'utf8'));
-
-// Cargar la clave privada y el certificado
-const options = {
-    key: fs.readFileSync('path/to/private-key.pem'),  // Ruta a tu archivo 'private-key.pem'
-    cert: fs.readFileSync('path/to/certificate.pem'),  // Ruta a tu archivo 'certificate.pem'
-};
 
 // Añade un endpoint para servir la documentación
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openapiDocument));
@@ -25,14 +17,14 @@ app.use(cors({
     origin: [
         'http://localhost:3000',  // Para desarrollo local
         'http://frontend:3000',   // Si usas un contenedor con el nombre 'frontend'
-        'http://172.31.41.141:3000',  // Dirección IP del frontend si está en una máquina diferente
-        'http://frontborjaocerin.s3-website-us-east-1.amazonaws.com',
-        'https://frontborjaocerin.s3-website-us-east-1.amazonaws.com',   // Dominio del bucket S3 con tu frontend
+        'http://172.26.6.222:3000',  // Dirección IP del frontend si está en una máquina diferente
+        'http://frontborjaocerin.s3-website-us-east-1.amazonaws.com',  // Dominio del bucket S3 con tu frontend
     ], 
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos permitidos
     allowedHeaders: ['Content-Type', 'Authorization'], // Encabezados permitidos
     credentials: true,  // Permitir credenciales
 }));
+
 
 app.use(express.json()); // Middleware para procesar el JSON
 
@@ -62,15 +54,17 @@ app.post('/api/users/logout', async (req, res) => {
         res.status(error.response?.status || 500).json({ message: error.message });
     }
 });
-
 app.get('/api/users/auth0-login', (req, res) => {
     console.log('Solicitud de login con Auth0 recibida');
     
     // Redirigir al microservicio que maneja Auth0 
-    res.redirect('http://172.31.41.141:5000/auth0-login'); 
+    res.redirect('http://172.26.6.222:5000/auth0-login'); 
 });
 
+
+
 app.use('/api/users', async (req, res) => {
+
     console.log('Solicitud recibida en el Gateway para usuarios:', req.method, req.originalUrl);
     console.log('Authorization Header en Gateway:', req.headers['Authorization']); // Debug
     
@@ -111,9 +105,10 @@ app.use('/api/products', async (req, res) => {
         res.status(error.response?.status || 500).json({ message: error.message });
     }
 });
-
 // Enrutar solicitudes al microservicio de compras
 app.use('/api/compras', async (req, res) => {
+
+    //console.log('Solicitud recibida en el Gateway para compras:', req.method, req.originalUrl);
     console.log('Headers de solicitud:', req.headers);
 
     try {
@@ -125,15 +120,17 @@ app.use('/api/compras', async (req, res) => {
                 'Authorization': req.headers['authorization'],
             },
         });
+        //console.log('Respuesta del microservicio de compras:', response.data);
         res.status(response.status).json(response.data);
     } catch (error) {
         console.error('Error en el microservicio de compras:', error.response?.data.message || error.message);
+        console.error('Detalles del error:', error.response); // Esto te dará más información
         res.status(error.response?.status || 500).json({ message: error.message });
     }
 });
 
-// Crear servidor HTTPS con las opciones de clave y certificado
-https.createServer(options, app).listen(PORT, () => {
-    console.log(`API Gateway escuchando en https://localhost:${PORT}`);
-    console.log(`Documentación disponible en https://localhost:${PORT}/api-docs`);
+// Iniciar el servidor
+app.listen(PORT, () => {
+    console.log(`API Gateway escuchando en http://localhost:${PORT}`);
+    console.log(`Documentación disponible en http://localhost:${PORT}/api-docs`);
 });
