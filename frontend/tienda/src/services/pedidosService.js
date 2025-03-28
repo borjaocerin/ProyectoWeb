@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Configuración de axios para el servicio de compras
 const api = axios.create({
-    baseURL: 'http://172.31.41.141:2000/api/compras' // Cambiar el puerto a 1000
+    baseURL: 'http://13.36.88.67:2000/api/compras' // Cambiar el puerto a 1000
 });
 
 // Obtener todas las compras

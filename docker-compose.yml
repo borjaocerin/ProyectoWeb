@@ -21,7 +21,7 @@ services:
     depends_on:
       - mongo_db
       - elasticsearch
-
+    entrypoint: ["sh", "-c", "sleep 30 && npm start"]  
   microservicio_compras:
     build:
       context: ./microservicios/compras

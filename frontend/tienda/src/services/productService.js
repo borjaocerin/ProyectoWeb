@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Configuración de axios
 const api = axios.create({
-    baseURL: 'http://172.31.41.141:2000/api/products'
+    baseURL: 'http://13.36.88.67:2000/api/products'
 });
 
 const getAllProducts = async () => {
