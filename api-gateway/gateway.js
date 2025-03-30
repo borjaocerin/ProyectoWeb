@@ -55,9 +55,9 @@ app.post('/api/users/logout', async (req, res) => {
 });
 app.get('/api/users/auth0-login', (req, res) => {
     console.log('Solicitud de login con Auth0 recibida');
-  
+    
     // Redirigir al microservicio que maneja Auth0 
-    res.redirect("http://frontborjaocerin.s3-website-us-east-1.amazonaws.com/auth/callback?access_token={access_token}&username={username}&email={email}"); 
+    res.redirect('http://microservicio_usuarios:5000/auth0-login'); 
 });
 
 
