@@ -106,9 +106,8 @@ def logout():
 def auth0_login():
     redirect_uri = app.config['AUTH0_CALLBACK_URL']
     
-    redirect_url = f"http://frontborjaocerin.s3-website-us-east-1.amazonaws.com/auth/callback?access_token=access_token&username=username&email=email"
-    return redirect(redirect_url)
-   # return auth0.authorize_redirect(redirect_uri)
+ 
+   return auth0.authorize_redirect(redirect_uri)
 
 @app.route('/callback', methods=['GET', 'POST'])
 def callback():
