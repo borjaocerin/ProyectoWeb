@@ -105,9 +105,7 @@ def logout():
 @app.route('/auth0-login')
 def auth0_login():
     redirect_uri = app.config['AUTH0_CALLBACK_URL']
-    
- 
-   return auth0.authorize_redirect(redirect_uri)
+    return auth0.authorize_redirect(redirect_uri)
 
 @app.route('/callback', methods=['GET', 'POST'])
 def callback():
