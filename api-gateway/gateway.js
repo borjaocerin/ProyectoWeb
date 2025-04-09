@@ -17,7 +17,8 @@ app.use(cors({
     origin: [
         'http://localhost:3000',  // Para desarrollo local
         'http://frontend:3000',   // Si usas un contenedor con el nombre 'frontend
-        'http://frontborjaocerin.s3-website-us-east-1.amazonaws.com',  // Dominio del bucket S3 con tu frontend
+        'http://frontborjaocerin.s3-website-us-east-1.amazonaws.com', 
+        'https://frontborjaocerin.s3-website-us-east-1.amazonaws.com',  // Dominio del bucket S3 con tu frontend
     ], 
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos permitidos
     allowedHeaders: ['Content-Type', 'Authorization'], // Encabezados permitidos
