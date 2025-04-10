@@ -10,7 +10,10 @@ services:
       - microservicio_my-elasticsearch-productos
       - microservicio_compras
       - microservicio_usuarios
-
+    volumes:
+      # Montar los archivos SSL desde el directorio raíz del proyecto a una ruta dentro del contenedor
+      - ./private-key.pem:/certificados/private-key.pem
+      - ./certificate.pem:/certificados/certificate.pem
   microservicio_my-elasticsearch-productos:
     build:
       context: ./microservicios/my-elasticsearch-productos
