@@ -6,6 +6,7 @@ const fs = require('fs');
 const yaml = require('js-yaml');
 const app = express();
 const PORT = 2000;
+<<<<<<< HEAD
 const https = require('https'); 
 
 // Carga los archivos SSL
@@ -13,6 +14,8 @@ const sslOptions = {
     key: fs.readFileSync('/certificados/private-key.pem'),  // Ruta a tu clave privada
     cert: fs.readFileSync('/certificados/certificate.pem')  // Ruta a tu certificado
 };
+=======
+>>>>>>> parent of 0d76380 (da)
 // Carga el archivo openapi.yaml
 const openapiDocument = yaml.load(fs.readFileSync('./openapi.yaml', 'utf8'));
 
@@ -24,9 +27,13 @@ app.use(cors({
     origin: [
         'http://localhost:3000',  // Para desarrollo local
         'http://frontend:3000',   // Si usas un contenedor con el nombre 'frontend
+<<<<<<< HEAD
         'http://frontborjaocerin.s3-website-us-east-1.amazonaws.com', 
         'https://frontborjaocerin.s3-website-us-east-1.amazonaws.com',  
         'https://dtk38116n0747.cloudfront.net' // Dominio del bucket S3 con tu frontend
+=======
+        'http://frontborjaocerin.s3-website-us-east-1.amazonaws.com',  // Dominio del bucket S3 con tu frontend
+>>>>>>> parent of 0d76380 (da)
     ], 
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos permitidos
     allowedHeaders: ['Content-Type', 'Authorization'], // Encabezados permitidos
@@ -137,8 +144,16 @@ app.use('/api/compras', async (req, res) => {
     }
 });
 
+<<<<<<< HEAD
 
 app.listen(PORT, () => {
     console.log(`API Gateway escuchando en http://localhost:${PORT}`);
     console.log(`Documentación disponible en http://localhost:${PORT}/api-docs`);
 });
+=======
+// Iniciar el servidor
+app.listen(PORT, () => {
+    console.log(`API Gateway escuchando en http://localhost:${PORT}`);
+    console.log(`Documentación disponible en http://localhost:${PORT}/api-docs`);
+});
+>>>>>>> parent of 0d76380 (da)
