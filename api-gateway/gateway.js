@@ -138,7 +138,7 @@ app.use('/api/compras', async (req, res) => {
 });
 
 
-https.createServer(sslOptions, app).listen(PORT, () => {
-    console.log(`API Gateway escuchando en https://localhost:${PORT}`);
-    console.log(`Documentación disponible en https://localhost:${PORT}/api-docs`);
+app.listen(PORT, () => {
+    console.log(`API Gateway escuchando en http://localhost:${PORT}`);
+    console.log(`Documentación disponible en http://localhost:${PORT}/api-docs`);
 });
