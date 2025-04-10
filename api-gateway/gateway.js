@@ -6,7 +6,6 @@ const fs = require('fs');
 const yaml = require('js-yaml');
 const app = express();
 const PORT = 2000;
-const https = require('https'); 
 
 // Carga los archivos SSL
 const sslOptions = {
