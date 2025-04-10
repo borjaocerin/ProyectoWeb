@@ -6,12 +6,6 @@ const fs = require('fs');
 const yaml = require('js-yaml');
 const app = express();
 const PORT = 2000;
-
-// Carga los archivos SSL
-const sslOptions = {
-    key: fs.readFileSync('../../ssl-key.key'),  // Ruta a tu clave privada
-    cert: fs.readFileSync('../../ssl-cert.crt')  // Ruta a tu certificado
-};
 // Carga el archivo openapi.yaml
 const openapiDocument = yaml.load(fs.readFileSync('./openapi.yaml', 'utf8'));
 
@@ -24,7 +18,6 @@ app.use(cors({
         'http://localhost:3000',  // Para desarrollo local
         'http://frontend:3000',   // Si usas un contenedor con el nombre 'frontend
         'http://frontborjaocerin.s3-website-us-east-1.amazonaws.com',  // Dominio del bucket S3 con tu frontend
-        'https://dtk38116n0747.cloudfront.net/products'
     ], 
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos permitidos
     allowedHeaders: ['Content-Type', 'Authorization'], // Encabezados permitidos
@@ -135,8 +128,8 @@ app.use('/api/compras', async (req, res) => {
     }
 });
 
-
-https.createServer(sslOptions, app).listen(PORT, () => {
-    console.log(`API Gateway escuchando en https://localhost:${PORT}`);
-    console.log(`Documentación disponible en https://localhost:${PORT}/api-docs`);
+// Iniciar el servidor
+app.listen(PORT, () => {
+    console.log(`API Gateway escuchando en http://localhost:${PORT}`);
+    console.log(`Documentación disponible en http://localhost:${PORT}/api-docs`);
 });
