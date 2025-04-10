@@ -10,8 +10,8 @@ const https = require('https');
 
 // Carga los archivos SSL
 const sslOptions = {
-    key: fs.readFileSync('../ssl-key.key'),  // Ruta a tu clave privada
-    cert: fs.readFileSync('../ssl-cert.crt')  // Ruta a tu certificado
+    key: fs.readFileSync('../../ssl-key.key'),  // Ruta a tu clave privada
+    cert: fs.readFileSync('../../ssl-cert.crt')  // Ruta a tu certificado
 };
 // Carga el archivo openapi.yaml
 const openapiDocument = yaml.load(fs.readFileSync('./openapi.yaml', 'utf8'));
