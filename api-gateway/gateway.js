@@ -23,9 +23,8 @@ app.use(cors({
     origin: [
         'http://localhost:3000',  // Para desarrollo local
         'http://frontend:3000',   // Si usas un contenedor con el nombre 'frontend
-        'http://frontborjaocerin.s3-website-us-east-1.amazonaws.com', 
-        'https://frontborjaocerin.s3-website-us-east-1.amazonaws.com',  
-        'https://dtk38116n0747.cloudfront.net' // Dominio del bucket S3 con tu frontend
+        'http://frontborjaocerin.s3-website-us-east-1.amazonaws.com',  // Dominio del bucket S3 con tu frontend
+        'https://dtk38116n0747.cloudfront.net/products'
     ], 
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos permitidos
     allowedHeaders: ['Content-Type', 'Authorization'], // Encabezados permitidos
@@ -65,7 +64,7 @@ app.get('/api/users/auth0-login', (req, res) => {
     console.log('Solicitud de login con Auth0 recibida');
     
     // Redirigir al microservicio que maneja Auth0 
-    res.redirect('http://13.36.88.67:5000/auth0-login'); 
+    res.redirect('http://microservicio_usuarios:5000/auth0-login'); 
 });
 
 
