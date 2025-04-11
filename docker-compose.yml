@@ -10,6 +10,10 @@ services:
       - microservicio_my-elasticsearch-productos
       - microservicio_compras
       - microservicio_usuarios
+    volumes:
+      # Ruta relativa desde el directorio donde ejecutas el docker-compose
+      - ./api-gateway/key.pem:/app/key.pem
+      - ./api-gateway/cert.pem:/app/cert.pem
 
   microservicio_my-elasticsearch-productos:
     build:
