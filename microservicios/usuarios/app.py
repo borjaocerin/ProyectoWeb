@@ -145,7 +145,7 @@ def callback():
         print("JWT generado para el usuario:", email)
 
         # Redirigir al usuario a la página de productos o cualquier página que desees
-        redirect_url = f"http://frontborjaocerin.s3-website-us-east-1.amazonaws.com/auth/callback?access_token={access_token}&username={username}&email={email}"
+        redirect_url = f"https:/dtk38116n0747.cloudfront.net/auth/callback?access_token={access_token}&username={username}&email={email}"
         return redirect(redirect_url)
     except Exception as e:
         print(f"Error en el callback de Auth0: {str(e)}")

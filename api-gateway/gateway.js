@@ -29,6 +29,7 @@ app.use(cors({
         'http://frontborjaocerin.s3-website-us-east-1.amazonaws.com',
         'https://d2ewsbyoiyhkjo.cloudfront.net',
         'https://dtk38116n0747.cloudfront.net'
+        
     ],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],

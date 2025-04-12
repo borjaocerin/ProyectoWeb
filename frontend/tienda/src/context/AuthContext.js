@@ -13,7 +13,7 @@ export const AuthProvider = ({ children }) => {
     // Función para iniciar sesión
     const login = async (email, password) => {
         try {
-            const response = await axios.post('https://13.36.88.67:2000/api/users/login', { email, password });
+            const response = await axios.post('https://pfg.borjapfg.link:2000/api/users/login', { email, password });
             const { access_token, username } = response.data; // Asegúrate de que este campo esté bien
             localStorage.setItem('token', access_token);
             localStorage.setItem('username', username);
@@ -39,7 +39,7 @@ export const AuthProvider = ({ children }) => {
     // Función para registrarse
     const register = async (username, email, password) => {
         try {
-            const response = await axios.post('https://13.36.88.67:2000/api/users/register', { username, email, password });
+            const response = await axios.post('https://pfg.borjapfg.link:2000/api/users/register', { username, email, password });
             console.log('Usuario registrado:', response.data);
             alert('Usuario registrado');
         } catch (error) {
@@ -58,7 +58,7 @@ export const AuthProvider = ({ children }) => {
     };
     // Función para login con Auth0
     const loginWithAuth0 = async () => {
-        window.location.href = 'https://13.36.88.67:2000/api/users/auth0-login';
+        window.location.href = 'https://pfg.borjapfg.link:2000/api/users/auth0-login';
     };
    
 
@@ -78,7 +78,7 @@ export const AuthProvider = ({ children }) => {
 
             // Envía una solicitud POST al servidor para cerrar sesión
             await axios.post(
-                'https://13.36.88.67:2000/api/users/logout',
+                'https://pfg.borjapfg.link:2000/api/users/logout',
                 {},
                 { headers: { Authorization: authHeader } } // Envía el token en los encabezados
              );

@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Configuración de axios
 const api = axios.create({
-    baseURL: 'https://api.borjapfg.link:2000/api/products'
+    baseURL: 'https://pfg.borjapfg.link:2000/api/products'
 });
 
 const getAllProducts = async () => {
