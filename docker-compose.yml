@@ -11,8 +11,8 @@ services:
       - microservicio_compras
       - microservicio_usuarios
     volumes:
-    - /etc/letsencrypt/live/api.borjapfg.link-0002/fullchain.pem:/app/fullchain.pem
-    - /etc/letsencrypt/live/api.borjapfg.link-0002/privkey.pem:/app/privkey.pem
+    - ./fullchain.pem:/app/fullchain.pem
+    - ./privkey.pem:/app/privkey.pem
 
   microservicio_my-elasticsearch-productos:
     build:
