@@ -12,9 +12,9 @@ const PORT = 2000;
 
 // Cargar certificados SSL
 const sslOptions = {
-    key: fs.readFileSync(path.join(__dirname, 'key.pem')),
-    cert: fs.readFileSync(path.join(__dirname, 'cert.pem')),
-};
+    key: fs.readFileSync(path.join('/app', 'privkey.pem')),
+    cert: fs.readFileSync(path.join('/app', 'fullchain.pem')),
+  };
 // 📘 Cargar OpenAPI
 const openapiDocument = yaml.load(fs.readFileSync('./openapi.yaml', 'utf8'));
 
