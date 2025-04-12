@@ -23,8 +23,7 @@ const AuthCallback = () => {
       localStorage.setItem('email', email);
 
       // Redirigir a la página de productos
-      const redirectUrl = `https://dtk38116n0747.cloudfront.net/auth/callback?access_token=${accessToken}&username=${username}&email=${email}`;
-      navigate(redirectUrl, { replace: true });
+      navigate('/products', { replace: true });
     } else {
       // Redirigir a una página de error si faltan datos
       navigate('/error', { replace: true });
