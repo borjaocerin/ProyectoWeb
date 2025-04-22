@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ProductCard from '../../components/ProductCard';
 import productService from '../../services/productService';
 import './Products.css';
-
+import { useTranslation } from 'react-i18next'; //
 const Products = () => {
     const [products, setProducts] = useState([]); // Productos filtrados
     const [categories, setCategories] = useState([]); // Todas las categorías, cargadas al inicio
@@ -11,7 +11,8 @@ const Products = () => {
     const [selectedCategory, setSelectedCategory] = useState('All Categories');
     const [minPrice, setMinPrice] = useState('');
     const [maxPrice, setMaxPrice] = useState('');
-
+    const { t } = useTranslation();
+    
     // Cargar todas las categorías al inicio
     const fetchCategories = async () => {
         const data = await productService.getAllProducts(); // Asume que devuelve todos los productos
@@ -79,32 +80,32 @@ const Products = () => {
             <aside className="filters-panel">
                 <input
                     type="text"
-                    placeholder="Search games..."
+                    placeholder={t('searchGames')}
                     className="search-input"
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                 />
 
-                <label>Console</label>
+                <label>{t('consoleLabel')}</label>
                 <select
                     className="filter-select"
                     value={selectedConsole}
                     onChange={(e) => setSelectedConsole(e.target.value)}
                 >
-                    <option>All Consoles</option>
+                    <option>{t('allConsoles')}</option>
                     <option>PS</option>
                     <option>Switch</option>
                     <option>Xbox</option>
                     <option>PC</option>
                 </select>
 
-                <label>Category</label>
+                <label>{t('categoryLabel')}</label>
                 <select
                     className="filter-select"
                     value={selectedCategory}
                     onChange={(e) => setSelectedCategory(e.target.value)}
                 >
-                    <option>All Categories</option>
+                    <option>{t('allCategories')}</option>
                     {categories.map((category) => (
                         <option key={category} value={category}>
                             {category}
@@ -112,18 +113,18 @@ const Products = () => {
                     ))}
                 </select>
 
-                <label>Price Range</label>
+                <label>{t('priceRangeLabel')}</label>
                 <div className="price-range">
                     <input
                         type="number"
-                        placeholder="Min"
+                        placeholder={t('minPlaceholder')}
                         className="price-input"
                         value={minPrice}
                         onChange={(e) => setMinPrice(e.target.value)}
                     />
                     <input
                         type="number"
-                        placeholder="Max"
+                        placeholder={t('maxPlaceholder')}
                         className="price-input"
                         value={maxPrice}
                         onChange={(e) => setMaxPrice(e.target.value)}
@@ -137,7 +138,7 @@ const Products = () => {
                         <ProductCard key={product.id} product={product} />
                     ))
                 ) : (
-                    <p>No products found.</p>
+                    <p>{t('noProducts')}</p>
                 )}
             </div>
         </div>

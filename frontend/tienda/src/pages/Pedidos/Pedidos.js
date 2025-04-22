@@ -3,10 +3,11 @@ import comprasService from '../../services/pedidosService'; // Importa el servic
 import productService from '../../services/productService'; // Importa el servicio de productos
 import { useAuth } from '../../context/AuthContext';
 import "./Pedidos.css"
+import { useTranslation } from 'react-i18next';
 const Pedidos = () => {
     const [orders, setOrders] = useState([]);
     const { user, email } = useAuth(); // Obtén el usuario logueado y el email
-
+    const { t } = useTranslation();
     // Función para obtener el historial de pedidos
     const fetchOrderHistory = async () => {
         if (!user) return; // Si no hay usuario, no hacer la petición
@@ -38,9 +39,9 @@ const Pedidos = () => {
 
     return (
         <div className="pedidos-container">
-            <div className="pedidos-title">Your Purchases</div>
+            <div className="pedidos-title">{t('yourPurchases')}</div>
             {orders.length === 0 ? (
-                <p>No tienes pedidos aún.</p>
+                <p>{t('noPedidos')}</p>
             ) : (
                 <ul className="pedidos-list">
                     {orders.map(order => (
@@ -50,12 +51,12 @@ const Pedidos = () => {
                                     <img src={order.productDetails.imageUrl} alt={order.productDetails.name} className="pedido-image" />
                                     <div className="pedido-details">
                                         <div className="pedido-name">{order.productDetails.name}</div>
-                                        <div className="pedido-date">Purchased on {new Date(order.fecha_pedido).toLocaleDateString()}</div>
-                                        <div className="pedido-price">${order.productDetails.price}</div>
+                                        <div className="pedido-date">{new Date(order.fecha_pedido).toLocaleDateString()}</div>
+                                        <div className="pedido-price">€{order.productDetails.price}</div>
                                     </div>
                                 </>
                             ) : (
-                                <p>No se pudo cargar la información del producto.</p>
+                                <p>{t('errorPedidos')}</p>
                             )}
                         </li>
                     ))}

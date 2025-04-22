@@ -5,6 +5,7 @@ import pedidosService from '../../services/pedidosService';
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import { useAuth } from '../../context/AuthContext'; // Para obtener el email del usuario
 import './ProductDetail.css';
+import { useTranslation } from 'react-i18next';
 
 const ProductDetail = () => {
     const { id } = useParams();
@@ -12,7 +13,8 @@ const ProductDetail = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const { email } = useAuth(); // Obtener email del usuario logueado
-
+    const { t } = useTranslation();
+    
     useEffect(() => {
         const fetchProductDetails = async () => {
             try {
@@ -61,7 +63,7 @@ const ProductDetail = () => {
 
     return (
         <div className="product-details-page">
-            <h1 className="product-title">Detalles del Producto</h1>
+            <h1 className="product-title">{t('detallesProducto')}</h1>
             {product ? (
                 <div className="product-content">
                     <div className="product-image-column">
@@ -69,8 +71,8 @@ const ProductDetail = () => {
                     </div>
                     <div className="product-info-column">
                         <h2 className="product-name">{product.name}</h2>
-                        <p className="product-price">Precio: {product.price} €</p>
-                        <p className="product-description">Descripción: {product.description}</p>
+                        <p className="product-price">{t('price')}: {product.price} €</p>
+                        <p className="product-description">{t('description')}: {product.description}</p>
 
                         {/* Botón de PayPal */}
                         <PayPalScriptProvider options={initialOptions}>
@@ -114,7 +116,7 @@ const ProductDetail = () => {
                     </div>
                 </div>
             ) : (
-                <p>Producto no encontrado.</p>
+                <p>{t('productoNoEncontrado')}</p>
             )}
         </div>
     );

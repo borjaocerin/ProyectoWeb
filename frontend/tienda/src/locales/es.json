@@ -1,0 +1,27 @@
+{
+    "allConsoles": "Todas las consolas",
+    "categoryLabel": "Categoría",
+    "priceRangeLabel": "Rango de precios",
+    "noProducts": "No se encontraron productos",
+    "searchPlaceholder": "Buscar juegos...",
+    "minPlaceholder": "Mínimo",
+    "maxPlaceholder": "Máximo",
+    "allCategories": "Todas las categorías",
+    "consoleLabel": "Consola",
+    "login": "Iniciar sesión",
+    "logout": "Cerrar sesión",
+    "detallesProducto":"Detalles del producto",
+    "price":"Precio",
+    "description":"Descripción",
+    "searchGames": "Buscar juegos...",
+    "username": "Nombre de usuario:",
+    "password": "Contraseña:",
+    "email": "Correo electrónico:",
+    "confirmPassword": "Confirmar contraseña:",
+    "auth0": "Iniciar sesión con Auth0",
+    "yourPurchases":"Tus compras",
+    "noPedidos": "No tienes pedidos aun.",
+    "errorPedidos":"No se pudo cargar la información del producto.",
+    "productoNoEncontrado":"Producto no encontrado."
+  }
+  

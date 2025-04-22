@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { useAuth } from '../../context/AuthContext'; // Importar useAuth
 import './Login.css'; 
-
+import { useTranslation } from 'react-i18next'; //
 const Login = () => {
     const { login, register, loginWithAuth0 } = useAuth(); // Desestructurar loginWithAuth0
     const [email, setEmail] = useState('');
@@ -12,7 +12,7 @@ const Login = () => {
     const [isLogin, setIsLogin] = useState(true);
     const [errorMessage, setErrorMessage] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
-
+    const { t } = useTranslation();
     const handleSubmit = async (e) => {
         e.preventDefault();
         setErrorMessage('');
@@ -46,7 +46,7 @@ const Login = () => {
                 <form onSubmit={handleSubmit}>
                     {!isLogin && (
                         <div className="form-group">
-                            <label>Username:</label>
+                            <label>{t('username')}</label>
                             <input
                                 type="text"
                                 value={username}
@@ -56,7 +56,7 @@ const Login = () => {
                         </div>
                     )}
                     <div className="form-group">
-                        <label>Email:</label>
+                        <label>{t('email')}</label>
                         <input
                             type="email"
                             value={email}
@@ -65,7 +65,7 @@ const Login = () => {
                         />
                     </div>
                     <div className="form-group">
-                        <label>Password:</label>
+                        <label>{t('password')}</label>
                         <input
                             type="password"
                             value={password}
@@ -75,7 +75,7 @@ const Login = () => {
                     </div>
                     {!isLogin && (
                         <div className="form-group">
-                            <label>Confirm Password:</label>
+                            <label>{t('confirmPassword')}</label>
                             <input
                                 type="password"
                                 value={confirmPassword}
@@ -92,7 +92,7 @@ const Login = () => {
              
                 {isLogin && (
                 <button onClick={loginWithAuth0} className="login-button">
-                    Login with Auth0
+                    {t('auth0')}
                 </button>
                   )}
                 {errorMessage && <p className="error-message">{errorMessage}</p>}

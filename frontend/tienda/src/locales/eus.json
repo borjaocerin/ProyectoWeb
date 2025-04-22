@@ -1,0 +1,28 @@
+{
+    "allConsoles": "Kontsola guztiak",
+    "categoryLabel": "Kategoria",
+    "priceRangeLabel": "Prezio tartea",
+    "noProducts": "Ez da produkturik aurkitu.",
+    "searchPlaceholder": "Bilatu jokoak...",
+    "minPlaceholder": "Minimoa",
+    "maxPlaceholder": "Maximoa",
+    "allCategories": "Kategoria guztiak",
+    "consoleLabel": "Kontsola",
+    "login": "Saioa hasi",
+    "logout": "Saioa amaitu",
+    "detallesProducto": "Produktuen xehetasunak",
+    "price":"Prezioa",
+    "description":"Descripzioa",
+    "searchGames": "Jokoak bilatu...",
+    "username": "Erabiltzailea:",
+    "password": "Pasahitza:",
+    "email": "Posta elektronikoa:",
+    "confirmPassword": "Pasahitza berretsi:",
+    "auth0": "Saioa hasi Auth0 bidez",
+    "yourPurchases":"Zure erosketak",
+    "noPedidos": "Ez duzu oraindik eskariarik.",
+    "errorPedidos": "Ezin izan da produktuaren informazioa kargatu.",
+    "productoNoEncontrado":"Produktua ez da aurkitu."
+
+  }
+  

@@ -7,7 +7,6 @@
     color: #ffffff;
 }
 
-
 .navbar-logo {
     display: flex;
     align-items: center;
@@ -22,12 +21,10 @@
     text-decoration: none;
 }
 
-
 .navbar-title:hover {
     text-decoration: underline; 
     color: #007BFF; 
 }
-
 
 .navbar-links {
     display: flex;
@@ -62,4 +59,50 @@
 
 .logout-button:hover {
     background-color: #c92c3b;
+}
+
+.language-selector {
+    position: relative;
+}
+
+.language-selector-btn {
+    background: none;
+    border: none;
+    font-size: 18px; /* Ajustamos el tamaño del texto para que coincida */
+    cursor: pointer;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    padding: 5px 10px; /* Ajustamos el padding para darle el tamaño adecuado */
+}
+
+.language-dropdown {
+    position: absolute;
+    top: 30px;
+    right: 0;
+    background-color: #141625;
+    border: 1px solid #444;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+    z-index: 100;
+}
+
+.language-option {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    cursor: pointer;
+    color: #ffffff;
+}
+
+.language-option:hover {
+    background-color: #333;
+}
+
+.language-flag {
+    width: 40px; /* Ajustamos el tamaño de la bandera */
+    height: 40px; /* Ajustamos el tamaño de la bandera */
+    margin-right: 8px;
 }
